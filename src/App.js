@@ -31,7 +31,9 @@ import LoginLayout from './layouts/LoginLayout'
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
+
       <Route index element={<Home />} />
+
       <Route path="about" element={<AboutLayout />}>
         <Route index element={<About />} />
         <Route path='galery' element={<Galery />} />
@@ -45,18 +47,17 @@ const router = createBrowserRouter(
       </Route>
 
       <Route path='profile' element={<Profile />} />
+      
       <Route path="dashboard" element={<DashboardLayout/>}>
         <Route index element={<Dashboard />} />
-        <Route 
-        path='devices' 
-        element={<Devices />}
-        loader={devicesLoader}
-        />
+        <Route path='devices' element={<Devices />}loader={devicesLoader}/>
+
         <Route path='device/:id' element={<DeviceLayout />}>
           <Route index element={<Device />} />
           <Route path='chartdetails/:id' element={<ChartDetails />} />
         </Route>
       </Route>
+
       <Route path='*' element={<ErrorPage />} />
     </Route>
   )

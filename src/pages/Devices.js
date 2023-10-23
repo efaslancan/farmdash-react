@@ -1,17 +1,18 @@
 import { useLoaderData, Link } from "react-router-dom"
-
-
+import img from "../images/logo512.png"
 export default function Devices() {
 
-  const devices = useLoaderData()
+  const {error,devices} = useLoaderData()
 
   return (
     <div className="devices">
       <h2>Your ioT Devices</h2>
       <h3>Add device form will be here</h3>
       <div className="cards-container">
-        {devices.map(device =>(
+        {error && <h3>Error: {error}</h3>}
+        {devices && devices.map(device =>(
           <div className="deviceCard" key={`deviceCard:${device._id}`}>
+            <img className="img" src={img} alt="" />
             <Link to={`/dashboard/device/${device._id}`} key={device._id}>
               <h2>{device.name}</h2>
               <h3>Description: {device.description}</h3>
